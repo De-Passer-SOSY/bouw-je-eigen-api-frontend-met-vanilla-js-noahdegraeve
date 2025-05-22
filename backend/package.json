@@ -1,0 +1,19 @@
+{
+  "name": "voertuigen",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "nd",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "knex": "^3.1.0",
+    "mysql2": "^3.14.1",
+    "swagger-ui-express": "^5.0.1"
+  }
+}

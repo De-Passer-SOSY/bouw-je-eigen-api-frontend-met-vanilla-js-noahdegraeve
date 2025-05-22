@@ -1,0 +1,145 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "voertuigen API",
+    "version": "1.0.0",
+    "description": "Een eenvoudige API voor voertuigen"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3333"
+    }
+  ],
+  "paths": {
+    "/absences": {
+      "get": {
+        "summary": "Toon alle voertuigen",
+        "responses": {
+          "200": {
+            "description": "Lijst van voertuigen"
+          }
+        }
+      }
+    },
+    "/absence/{id}": {
+      "get": {
+        "summary": "Toon één voertuig",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "voertuig gevonden"
+          },
+          "404": {
+            "description": "Niet gevonden"
+          }
+        }
+      }
+    },
+    "/newAbsence": {
+      "post": {
+        "summary": "Voeg een voertuig toe",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merk": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "categorie": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "voertuig toegevoegd"
+          }
+        }
+      }
+    },
+    "/updateAbsence/{id}": {
+      "put": {
+        "summary": "Wijzig een voertuig",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "merk": {
+                    "type": "string"
+                  },
+                  "type": {
+                    "type": "string"
+                  },
+                  "categorie": {
+                    "type": "string",
+                    "format": "date"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "voertuig bijgewerkt"
+          }
+        }
+      }
+    },
+    "/deleteAbsence/{id}": {
+      "delete": {
+        "summary": "Verwijder een voertuig",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Verwijderd"
+          },
+          "404": {
+            "description": "Niet gevonden"
+          }
+        }
+      }
+    }
+  }
+}
