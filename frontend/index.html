@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚗 Voertuigen api</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
+<!-- Navigatie -->
+<aside aria-label="Zijbalk">
+    <h1>🚗 Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="#">🏠 Home</a></li>
+            <li><a href="index.html" class="active">📋 Voertuigen</a></li>
+        </ul>
+    </nav>
+</aside>
+
+<!-- Hoofdgedeelte -->
+<main>
+
+    <header>
+        <h2>📋 Voertuigbeheer</h2>
+        <p id="melding" class="alertHidden" role="alert"></p>
+    </header>
+
+    <!-- Formuliersectie -->
+    <section id="formWrapper" class="formSectionHidden" aria-label="Voertuig toevoegen of wijzigen">
+        <form id="Voertuigenform">
+            <input type="hidden" id="vehicleId" />
+
+            <fieldset>
+                <legend>Voertuiggegevens</legend>
+
+                <label for="merk">Merk</label>
+                <input type="text" id="merk" required />
+
+                <label for="type">Type</label>
+                <input type="text" id="type" required />
+
+                <label for="categorie">Categorie</label>
+                <input type="text" id="categorie" required />
+
+            </fieldset>
+
+            <button type="submit">💾 Opslaan</button>
+        </form>
+    </section>
+
+    <!-- Toevoegknop -->
+    <section aria-label="Voertuig toevoegen">
+        <button id="openForm">➕ NieuwVoertuig</button>
+    </section>
+
+    <!-- Tabeloverzicht -->
+    <section aria-label="Voertuigenlijst">
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Merk</th>
+                <th scope="col">Type</th>
+                <th scope="col">Categorie</th>
+            </tr>
+            </thead>
+            <tbody id="Voertuigenlijst"></tbody>
+        </table>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2025 VoertuigenApi</p>
+</footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
