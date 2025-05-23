@@ -13,23 +13,23 @@ app.get("/voertuigen", async (req, res) => {
     try {
         const voertuigen = await db("voertuigen");
         res.status(200).json(voertuigen);
-    }catch{
-        res.status(500).json({message:"internal server error"});
+    } catch {
+        res.status(500).json({message: "internal server error"});
 
     }
 });
 
 app.get("/voertuig/:id", async (req, res) => {
     const {id} = req.params;
-    try{
+    try {
         const voertuig = await db("voertuigen").where("id", id);
-        if(voertuig) {
+        if (voertuig) {
             res.status(200).json(voertuig);
-        }else{
-            res.status(500).json({message:"voertuig not found"});
+        } else {
+            res.status(500).json({message: "voertuig not found"});
         }
-    }catch(error){
-        res.status(500).json({message:"internal server error"});
+    } catch (error) {
+        res.status(500).json({message: "internal server error"});
 
     }
 });
@@ -40,7 +40,7 @@ app.post("/newVoertuig", async (req, res) => {
         return res.status(400).json({error: "Vul alle velden in."});
     }
     try {
-        const [id] = await db("absences").insert({
+        const [id] = await db("voertuigen").insert({
             merk,
             type,
             categorie
@@ -63,7 +63,7 @@ app.put("/updateVoertuig/:id", async (req, res) => {
         return res.status(400).json({error: "Vul alle velden in."});
     }
     try {
-        const count = await db("absences")
+        const count = await db("voertuigen")
             .where("id", id)
             .update({merk, type, categorie});
 
@@ -71,7 +71,6 @@ app.put("/updateVoertuig/:id", async (req, res) => {
             res.status(400).json({error: "voertuig niet gevonden"});
         }
 
-        const updated = await db("voertuigen").where({id}).first();
 
         res.status(200).json({
                 message: "voertuig toegevoegd", updated: updated
@@ -90,7 +89,7 @@ app.delete("/deleteVoertuig/:id", async (req, res) => {
         if (deleted === 0) {
             res.status(404).json({error: "voertuig niet gevonden"});
         }
-        res.status(200).json({error: "voertuig verwijderd"});
+        res.status(200).json({success: "voertuig verwijderd"});
     } catch {
         res.status(500).json({error: "internal server error"});
     }

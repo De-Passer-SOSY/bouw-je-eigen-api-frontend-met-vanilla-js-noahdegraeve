@@ -5,7 +5,7 @@ const db = knex({
         host: 'web0164.zxcs.be',
         user: 'adb_noah',
         password: 'bhhBGXdaAhTJxj8muDGm',
-        database: 'adb_voorbeeld'
+        database: 'adb_project_noah'
     }
 })
 
